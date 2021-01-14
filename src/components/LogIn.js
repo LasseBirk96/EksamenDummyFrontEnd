@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { Row, Container, Col } from "react-bootstrap";
 
-export default function LogIn({ login, init, errorMsg }) {
+
+export default function LogIn({ login, init }) {
   const [loginCredentials, setLoginCredentials] = useState(init);
 
   const history = useHistory();

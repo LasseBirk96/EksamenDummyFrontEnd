@@ -63,6 +63,15 @@ export default function Header({ loggedIn, admin, logout, activeUser }) {
         ) : (
           ""
         )}
+         {!admin && !loggedIn ? (
+          <li>
+            <NavLink activeClassName="active" to="/remove">
+              Remove User
+            </NavLink>
+          </li>
+        ) : (
+          ""
+        )}
       </div>
 
       {admin || loggedIn ? (

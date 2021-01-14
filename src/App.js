@@ -17,13 +17,14 @@ import Register from "./components/Register";
 import Account from "./components/Account";
 import Orders from "./components/Orders";
 import Users from "./components/Users";
+import Remove from "./components/RemoveUser";
 
 
 function App() {
   const init = { username: "", password: "" };
   const [loggedIn, setLoggedIn] = useState(facade.loggedIn);
   const [errorMsg, setErrMsg] = useState("");
-  const [activeUser, setActiveUser] = useState(facade.getActivUser);
+  const [activeUser, setActiveUser] = useState(facade.getActiveUser);
   const [admin, setAdmin] = useState(false);
 
   const logout = () => {
@@ -74,6 +75,15 @@ function App() {
           ) : (
             ""
           )}
+          {!loggedIn ? (
+            <Route exact path="/remove">
+              <Remove />
+            </Route>
+          ) : (
+            ""
+          )}
+           
+         
           {!loggedIn ? (
             <Route exact path="/login">
               <LogIn login={login} init={init} errorMsg={errorMsg} />

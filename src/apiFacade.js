@@ -24,7 +24,7 @@ function apiFacade() {
     return localStorage.getItem("user");
   };
   const loggedIn = () => {
-    console.log("chcecking if logged in in facade");
+    console.log("checking if logged in in facade");
     const loggedIn = getToken() != null;
     return loggedIn;
   };
@@ -45,6 +45,15 @@ function apiFacade() {
         setActiveUser(user);
       });
   };
+
+  const removeUser = (user) => {
+    const options = makeOptions("POST", true, {
+      ...user,
+    });
+    return fetch(URL + "/api/user/delete", options).then(handleHttpErrors)
+  };
+
+
 
   const fetchData = (url2) => {
     const options = makeOptions("GET", true); //True add's the token
@@ -81,6 +90,7 @@ function apiFacade() {
     getToken,
     loggedIn,
     login,
+    removeUser,
     logout,
     fetchData,
     registerUser,
